@@ -90,3 +90,23 @@ def print_phone_book_menu():
     print('===================')
     num = int( input('메뉴 선택 : ') )
     return num
+
+# 추가 등록 함수
+def add_phone_num():
+    
+    # 1. DB에 넣어야할 항목들을 입력받자.
+    input_name = input('이름 : ')
+    input_phone = input('전화번호 : ')
+    input_memo = input('메모사항 : ')
+    
+    # 2. SQL 작성 -> INSERT INTO 로 데이터 추가. => user_id=12 처럼, DB의 본인 숫자를 찾아서 하드코딩으로 INSERT.
+    sql = f"INSERT INTO contacts (contacts.name, contacts.phone_num, contacts.memo, contacts.user_id) VALUES ('{input_name}', '{input_phone}', '{input_memo}', 12)"
+    
+    # 3. cursor / db_connect 를 이용, 실제 DB에 쿼리 수행.
+    cursor.execute(sql)
+    db_connect.commit()
+    
+    # 4. 안내메세지 2초간 출력 ('연락처 등록이 완료되었습니다.')
+    
+    print('연락처 등록이 완료되었습니다.')
+    sleep(2)
