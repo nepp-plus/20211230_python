@@ -3,13 +3,14 @@
 # DB 연결 => 기타기능 : phone_book.py 모듈 이용.
 
 import pymysql
+from phone_book import set_db_info
 
 # DB에 연결을 해야 -> 쿼리를 날릴 수 있다.
 
 # DB 연결부터 진행
 # DB 연결시도의 결과를 변수에 담자.
 
-# 
+# 접속 정보만 명시
 db = pymysql.connect(
     host='finalproject.cbqjwimiu76h.ap-northeast-2.rds.amazonaws.com', 
     port=3306, 
@@ -18,19 +19,5 @@ db = pymysql.connect(
     db='test_phone_book',
     charset='utf8')
 
-
-# cursor : DB에 쿼리를 날려주는 역할을 하는 인스턴스. + SELECT는 실행 결과를 받아와주는 역할도 담당.
-cursor = db.cursor()
-
-# users의 모든 데이터를 SELECT로 확인. (예시)
-
-# 어떤 쿼리를 날릴지를 sql 변수에 저장
-sql = f'SELECT * FROM users'
-cursor.execute(sql)  # cursor에 쿼리 실행 결과 (표)가 저장되게됨.
-
-# 저장된 내용을 => 파이썬에서 다루기 쉬운 => tuple 형태로 전환. => 변수에 담자.
-query_result_list = cursor.fetchall()
-
-# 받아낸 목록을 출력
-for row  in query_result_list:
-    print(row)
+# phone_book.py에서 로직 작성 => 연결정보를 넘겨주고, 그 파일에서 활용.
+set_db_info(db)
