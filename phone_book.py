@@ -178,3 +178,14 @@ def search_my_contact_list():
         
         # contact_num에 맞는 line을 가지고 => dict을 가지고, Contact 형태의 객체로 변환. (클래스 활용)
         contact = Contact()  # 임시로, 기본값만 가지고 있는 연락처 생성.
+        
+        # 위치에 맞는 dict 꺼내오자. => dict의 내용을 가지고 => contact객체의 내용물변수들을 채워주자. (클래스의 기능 추가)
+        select_line = result[contact_num-1] # dict 꺼내오기.
+        contact.set_data(select_line)  # dict -> 클래스 인스턴스 예제.
+        
+        # cf) 클래스 객체 -> dict로 변환해야하는 경우도 많다. (메쏘드로 만들고 활용. 향후 체험 예정)
+        
+        # 데이터 세팅 성공 여부 확인.
+        print( contact.name )
+        
+        
