@@ -2,7 +2,9 @@
 # 단순 동작 위주의 코드 작성
 # DB 연결 => 기타기능 : phone_book.py 모듈 이용.
 
-from phone_book import print_main_menu
+from phone_book import print_main_menu, sign_up
 
 menu_num = print_main_menu()
 
+if menu_num == 2:
+    sign_up()
