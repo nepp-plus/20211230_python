@@ -151,4 +151,20 @@ def search_my_contact_list():
     # 이름에 input_keyword를 포함하고 있는 (내가 가진) 모든 연락처 목록을 조회.
     sql = f"SELECT * FROM contacts WHERE contacts.user_id = {login_user_id} AND contacts.name LIKE '%{input_keyword}%'"
     
-    print('완성된 쿼리 : ', sql)
+    # print('완성된 쿼리 : ', sql)
+    
+    # DB에서 쿼리 실행 -> 결과 출력
+    cursor.execute(sql)
+    
+    result = cursor.fetchall()  # DB row들의 목록 : tuple
+    
+    # result : 검색 결과 목록 => 0개? 검색결과 없음.
+    if len(result) == 0:
+        print('검색 결과가 없습니다.')
+        sleep(2)
+    else:
+        # 검색 결과 확인
+        for  row  in result:
+            print(row)
+            
+        sleep(2)
