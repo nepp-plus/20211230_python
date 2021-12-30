@@ -62,6 +62,14 @@ def sign_in():
     # cursor에는 실행 결과가 표로 담겨있다. => tuple로 변환.
     user_list = cursor.fetchall()
     
-    # for문 => 내용 확인
-    for user in  user_list:
-        print(user)
+    # 로그인 성공? 실패? 판별 기준 => user_list의 갯수가 0개 : 실패.
+    if len(user_list) == 0:
+        print('잘못된 회원 정보입니다. 다시 로그인 해주세요.')
+        sleep(2)
+        return False
+    else:
+        # 아이디/비번 일치 회원 발견. => 성공
+        print(f'로그인에 성공했습니다.')
+        sleep(2)
+        
+        return True
