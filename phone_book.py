@@ -69,7 +69,13 @@ def sign_in():
         return False
     else:
         # 아이디/비번 일치 회원 발견. => 성공
-        print(f'로그인에 성공했습니다.')
+        # user_list => 0번쨰 아이템 : 로그인에 성공한 사람 정보.
+        
+        login_user = user_list[0] # 최소한, 0번째는 있을것이다.
+        # print(login_user)  # 로그인 사용자 정보를 => 모든 항목들을 tuple로 묶어서 들고있다.
+        user_nickname = login_user[3]  # 사용자 정보 tuple => 닉네임을 추출.
+        
+        print(f'{user_nickname}님, 환영합니다!')  # 로그인에 성공한 사람의 닉네임이 뭔지?
         sleep(2)
         
         return True
