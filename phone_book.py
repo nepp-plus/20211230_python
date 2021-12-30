@@ -191,7 +191,7 @@ def search_my_contact_list():
             new_name = input('변경할 이름 : ')
             update_contact(contact, new_name)
         elif detail_num == 2:
-            delete_contact()
+            delete_contact(contact)
             
         
     
@@ -201,8 +201,14 @@ def update_contact(contact, value):
     
     cursor.execute(sql) # 어떤 변경사항이 있을지를 알려줌.
     db_connect.commit() # 변경사항들 실제 반영.
+    print('연락처 변경 완료')
+    sleep(2)
 
-def delete_contact():
-    pass
-        
-        
+def delete_contact(contact):
+    # DELETE문을 선택한 연락처만 지우는 용도로 실행해보자.
+    sql = f"DELETE FROM contacts WHERE contacts.id = {contact.id}"
+    
+    cursor.execute(sql)
+    db_connect.commit()
+    print('연락처 삭제 완료')
+    sleep(2)
