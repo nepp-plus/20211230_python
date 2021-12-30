@@ -39,4 +39,5 @@ def sign_up():
     # f"문장"  형태로, 큰 string은 " " 로 감싸자.
     sql = f"INSERT INTO users (users.email, users.password, users.nickname) VALUES ( '{input_email}', '{input_password}', '{input_nickname}' )"
     
-    print(sql)
+    cursor.execute(sql)
+    db_connect.commit()
