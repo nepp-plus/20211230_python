@@ -163,8 +163,13 @@ def search_my_contact_list():
         print('검색 결과가 없습니다.')
         sleep(2)
     else:
-        # 검색 결과 확인
-        for  row  in result:
-            print(row)
+        
+        print('==== 검색 결과 ====')
+        
+        # 검색 결과 확인 => 1. 이름 (메모) ... 4. 이름4 (메모4)
+        for index, row  in enumerate(result):  # 반복시 enumerate함수 => 몇번째 줄 + 어떤 데이터 동시 추출
+            line = f"{index+1}. {row['name']} ({row['memo']})"
+            print(line)
             
-        sleep(2)
+        # 몇번 연락처를 상세보기 할건지?
+        contact_num = int( input('상세 보기 연락처 선택 : ') )
