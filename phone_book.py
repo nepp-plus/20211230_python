@@ -185,7 +185,7 @@ def search_my_contact_list():
         
         # cf) 클래스 객체 -> dict로 변환해야하는 경우도 많다. (메쏘드로 만들고 활용. 향후 체험 예정)
         
-        # 데이터 세팅 성공 여부 확인.
-        print( contact.name )
+        # 연락처의 상세 정보 표시. (메쏘드로 만들고 활용)
+        detail_num = contact.show_detail_info()
         
         

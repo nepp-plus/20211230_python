@@ -18,3 +18,18 @@ class Contact:
         self.name = info_dict['name']
         self.phone_num = info_dict['phone_num']
         self.memo = info_dict['memo']
+        
+    # 상세보기 기능 추가
+    def show_detail_info(self):
+        print('===== 연락처 상세 보기 =====')
+        print(f'이름 : {self.name}')
+        print(f'폰번 : {self.phone_num}')
+        print(f'메모사항 : {self.memo}')
+        
+        # 정보 수정 / 삭제 기능 선택 지원.
+        print('===========================')
+        print('1. 연락처 수정')
+        print('2. 연락처 삭제')
+        print('0. 이전 메뉴로')
+        print('===========================')
+        return int( input('추가 행동 선택 : ') )
